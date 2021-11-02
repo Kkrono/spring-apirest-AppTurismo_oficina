@@ -27,7 +27,7 @@ public class DepServiceImpl implements IDepService {
 	@Override
 	public Optional<Departamentos> findById(int id) {
 		Optional<Departamentos> dep=depDao.findById(id);		
-		Optional<Paises> pais;
+		//Optional<Paises> pais;
 		//paisDao.findById(idPais);
 		return dep;
 	}
