@@ -24,12 +24,13 @@ public class Departamentos implements Serializable {
 	@Id
 	Long id_dep;
 	@Getter @Setter String nombre_dep;
-	@Getter @Setter Long id_pais_fk; 
+	@Getter @Setter Long id_pais_fk;
 
-	public Departamentos(String nombre_dep) {
+	public Departamentos(String nombre_dep,Long id_pais_fk) {
 		this.nombre_dep = nombre_dep;
+		this.id_pais_fk=id_pais_fk;
 	}
-
+	
 	private static final long serialVersionUID = 1L;
 
 }

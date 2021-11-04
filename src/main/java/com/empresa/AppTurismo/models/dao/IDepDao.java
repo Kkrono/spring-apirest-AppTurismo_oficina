@@ -4,6 +4,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.empresa.AppTurismo.models.entity.Departamentos;
 
-public interface IDepDao extends MongoRepository<Departamentos, Integer>{
+public interface IDepDao extends MongoRepository<Departamentos, Long> {
+
 
 }

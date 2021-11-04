@@ -21,7 +21,7 @@ public class PaisServiceImpl implements IPaisService {
 	}
 
 	@Override
-	public Optional<Paises> findById(int id) {
+	public Optional<Paises> findById(Long id) {
 		// TODO Auto-generated method stub
 		return paisDao.findById(id);
 	}
@@ -33,7 +33,7 @@ public class PaisServiceImpl implements IPaisService {
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(Long id) {
 		// TODO Auto-generated method stub
 		paisDao.deleteById(id);
 	}
