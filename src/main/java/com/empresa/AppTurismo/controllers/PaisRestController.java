@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.empresa.AppTurismo.models.entity.Paises;
-import com.empresa.AppTurismo.models.services.IPaisService;
 import com.empresa.AppTurismo.models.services.SequenceGeneratorService;
+import com.empresa.AppTurismo.models.services.pais.IPaisService;
 
 
 @CrossOrigin(origins = {"http://localhost:4200","http://localhost"})
@@ -31,11 +31,11 @@ public class PaisRestController {
 	private SequenceGeneratorService service;
 	@GetMapping("/paises")
 	public List<Paises> index(){
-		return paisService.findAll();
+		return paisService.getAll();
 	}
 	@GetMapping("/paises/{id}")
-	public Optional<Paises> show(@PathVariable Long id) {
-		return paisService.findById(id);
+	public Paises show(@PathVariable Long id) {
+		return paisService.get(id); 
 	}
 	@PostMapping("/paises")
 	@ResponseStatus(HttpStatus.CREATED)
@@ -46,8 +46,8 @@ public class PaisRestController {
 	@PutMapping("/paises/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Paises update(@RequestBody Paises pais,@PathVariable Long id) {
-		Optional<Paises> sitioActual = paisService.findById(id);
-		Paises sitioValues=sitioActual.get();
+		Paises sitioActual = paisService.get(id); 
+		Paises sitioValues=sitioActual;
 		sitioValues.setNombre_pais(pais.getNombre_pais());
 		return paisService.save(sitioValues);
 	}

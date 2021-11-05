@@ -28,34 +28,32 @@ public class DepRestController {
 	@Autowired
 	private IDepService depService;
 	@Autowired
+
 	private SequenceGeneratorService service;
 	@GetMapping("/dpto")
 	public List<Departamentos> index(){
-		return depService.findAll();
-	}
-	@GetMapping("/dptoC")
-	public List<Departamentos> indexC(){
-		return depService.findAllC();
+		return depService.getAll();
 	}
 	@GetMapping("/dpto/{id}")
-	public Optional<Departamentos> show(@PathVariable Long id) {
-		return depService.findById(id);
+	public Departamentos show(@PathVariable Long id) {
+		return depService.get(id);
 	}
 	
-	@PostMapping("/dpto/{idPais}")
+	@PostMapping("/dpto")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Departamentos create(@RequestBody Departamentos dep,@PathVariable Long idPais) {
+	public Departamentos create(@RequestBody Departamentos dep) {
+		depService.verificarPaisExiste(dep);
 		dep.setId_dep((long) service.getSequenceNumber(Departamentos.SEQUENCE_NAME));
-		return depService.save(dep,idPais);
+		return depService.save(dep);
 	}
-	
+
 	@PutMapping("/dpto/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Departamentos update(@RequestBody Departamentos dep,@PathVariable Long id) {
-		Optional<Departamentos> sitioActual = depService.findById(id);
-		Departamentos sitioValues=sitioActual.get();
+		Departamentos sitioActual = depService.get(id);
+		Departamentos sitioValues=sitioActual;
 		sitioValues.setNombre_dep(dep.getNombre_dep());
-		return depService.save(sitioValues,0L);
+		return depService.save(sitioValues);
 	}
 	
 	@DeleteMapping("/dpto/{id}")

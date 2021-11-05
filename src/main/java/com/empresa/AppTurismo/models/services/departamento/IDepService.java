@@ -1,15 +1,11 @@
 package com.empresa.AppTurismo.models.services.departamento;
 
 
-import java.util.List;
-import java.util.Optional;
-
 import com.empresa.AppTurismo.models.entity.Departamentos;
+import com.empresa.AppTurismo.models.services.comun.ServiciosGenericos;
 
-public interface IDepService {
-	public List<Departamentos> findAll();
-	public List<Departamentos> findAllC();
-	public Optional<Departamentos> findById(Long id);
-	public Departamentos save(Departamentos dep,Long idPais);
-	public void delete(Long id);
+public interface IDepService extends ServiciosGenericos<Departamentos, Long> {
+
+	Departamentos verificarPaisExiste(Departamentos dep);
+
 }
