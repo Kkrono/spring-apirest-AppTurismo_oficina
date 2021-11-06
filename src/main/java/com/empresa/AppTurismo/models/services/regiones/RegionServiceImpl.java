@@ -35,8 +35,4 @@ public class RegionServiceImpl extends ServiciosGenericosImpl<Regiones, Long> im
 		return regiones;
 	}
 
-
-
-
-
 }
