@@ -1,7 +1,6 @@
 package com.empresa.AppTurismo.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,8 +27,8 @@ public class DepRestController {
 	@Autowired
 	private IDepService depService;
 	@Autowired
-
 	private SequenceGeneratorService service;
+
 	@GetMapping("/dpto")
 	public List<Departamentos> index(){
 		return depService.getAll();
@@ -53,6 +52,8 @@ public class DepRestController {
 		Departamentos sitioActual = depService.get(id);
 		Departamentos sitioValues=sitioActual;
 		sitioValues.setNombre_dep(dep.getNombre_dep());
+		depService.verificarPaisExiste(dep);
+		sitioValues.setId_pais_fk(dep.getId_pais_fk());
 		return depService.save(sitioValues);
 	}
 	

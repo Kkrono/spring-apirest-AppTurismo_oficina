@@ -27,8 +27,8 @@ public class RegionRestController {
 	@Autowired
 	private IRegionService regionService;
 	@Autowired
-
 	private SequenceGeneratorService service;
+
 	@GetMapping("/region")
 	public List<Regiones> index(){
 		return regionService.getAll();
@@ -52,6 +52,8 @@ public class RegionRestController {
 		Regiones sitioActual = regionService.get(id);
 		Regiones sitioValues=sitioActual;
 		sitioValues.setNombre_reg(regiones.getNombre_reg());
+		regionService.verificarDepExiste(regiones);
+		sitioValues.setId_dep_fk(regiones.getId_dep_fk());
 		return regionService.save(sitioValues);
 	}
 	

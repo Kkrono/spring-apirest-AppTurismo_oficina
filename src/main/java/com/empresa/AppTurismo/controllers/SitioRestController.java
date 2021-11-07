@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.empresa.AppTurismo.models.entity.Sitios;
 import com.empresa.AppTurismo.models.services.SequenceGeneratorService;
+import com.empresa.AppTurismo.models.services.sitios.ISitioService;
 
 
 @CrossOrigin(origins = {"http://localhost:4200","http://localhost"})
@@ -24,10 +25,10 @@ import com.empresa.AppTurismo.models.services.SequenceGeneratorService;
 @RequestMapping("/api")
 public class SitioRestController {
 	@Autowired
-	private com.empresa.AppTurismo.models.services.sitios.ISitioService sitioService;
+	private ISitioService sitioService;
 	@Autowired
-
 	private SequenceGeneratorService service;
+
 	@GetMapping("/sitio")
 	public List<Sitios> index(){
 		return sitioService.getAll();
@@ -39,18 +40,22 @@ public class SitioRestController {
 	
 	@PostMapping("/sitio")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Sitios create(@RequestBody Sitios sitioes) {
-		sitioService.verificarRegionExiste(sitioes);
-		sitioes.setId_sit((long) service.getSequenceNumber(Sitios.SEQUENCE_NAME));
-		return sitioService.save(sitioes);
+	public Sitios create(@RequestBody Sitios sitios) {
+		sitioService.verificarRegionExiste(sitios);
+		sitios.setId_sit((long) service.getSequenceNumber(Sitios.SEQUENCE_NAME));
+		return sitioService.save(sitios);
 	}
 
 	@PutMapping("/sitio/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Sitios update(@RequestBody Sitios sitioes,@PathVariable Long id) {
+	public Sitios update(@RequestBody Sitios sitios,@PathVariable Long id) {
 		Sitios sitioActual = sitioService.get(id);
 		Sitios sitioValues=sitioActual;
-		sitioValues.setNombre_sit(sitioes.getNombre_sit());
+		sitioValues.setNombre_sit(sitios.getNombre_sit());
+		sitioService.verificarRegionExiste(sitios);
+		sitioValues.setId_reg_fk(sitios.getId_reg_fk());
+		sitioValues.setDescripcion_sit(sitios.getDescripcion_sit());
+		sitioValues.setImagen_sit(sitios.getImagen_sit());
 		return sitioService.save(sitioValues);
 	}
 	
