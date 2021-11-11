@@ -23,10 +23,12 @@ public class ComidasTipicas implements Serializable {
 	
 	@Id
 	private Long id_pla;
-	@Getter @Setter private String nombre_pla;
-	@Getter @Setter private String imagen_pla;
-	@Getter @Setter private String descipcion_pla;
-	@Getter @Setter private Long id_sit_fk;
+	private String nombre_pla;
+	private String imagen_pla;
+	private String descipcion_pla;
+	private Long id_sit_fk;
+
+	private static final long serialVersionUID = 1L;
 
 	public ComidasTipicas(String nombre_pla, String imagen_pla, String descipcion_pla, Long id_sit_fk) {
 		this.nombre_pla = nombre_pla;
@@ -34,5 +36,4 @@ public class ComidasTipicas implements Serializable {
 		this.descipcion_pla = descipcion_pla;
 		this.id_sit_fk = id_sit_fk;
 	}
-	private static final long serialVersionUID = 1L;
 }

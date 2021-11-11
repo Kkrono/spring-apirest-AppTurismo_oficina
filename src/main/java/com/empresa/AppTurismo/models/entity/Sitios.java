@@ -23,10 +23,12 @@ public class Sitios implements Serializable {
 	
 	@Id
 	private Long id_sit;
-	@Getter @Setter private String nombre_sit;
-	@Getter @Setter private String descripcion_sit;
-	@Getter @Setter private String imagen_sit;
-	@Getter @Setter private Long id_reg_fk;
+	private String nombre_sit;
+	private String descripcion_sit;
+	private String imagen_sit;
+	private Long id_reg_fk;
+
+	private static final long serialVersionUID = 1L;
 
 	public Sitios(String nombre_sit, String descripcion_sit, String imagen_sit, Long id_reg_fk) {
 		this.nombre_sit = nombre_sit;
@@ -35,6 +37,5 @@ public class Sitios implements Serializable {
 		this.id_reg_fk = id_reg_fk;
 	}
 
-	private static final long serialVersionUID = 1L;
 
 }

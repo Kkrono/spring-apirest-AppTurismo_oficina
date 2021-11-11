@@ -23,29 +23,11 @@ public class Paises implements Serializable {
 	private Long id_pais;
 	private String nombre_pais;
 
+	private static final long serialVersionUID = 1L;
+
 	public Paises(String nombre_pais) {
 		this.nombre_pais = nombre_pais;
 	}
 
-	public long getId_pais() {
-		return id_pais;
-	}
-
-	public void setId_pais(Long id_pais) {
-		this.id_pais = id_pais;
-	}
-
-	public String getNombre_pais() {
-		return nombre_pais;
-	}
-
-	public void setNombre_pais(String nombre_pais) {
-		this.nombre_pais = nombre_pais;
-	}
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 }

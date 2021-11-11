@@ -23,14 +23,14 @@ public class Regiones implements Serializable {
 	
 	@Id
 	private Long id_reg;
-	@Getter @Setter private String nombre_reg;
-	@Getter @Setter private Long id_dep_fk;
+	private String nombre_reg;
+	private Long id_dep_fk;
+
+	private static final long serialVersionUID = 1L;
 
 	public Regiones(String nombre_reg,Long id_dep_fk) {
 		this.nombre_reg = nombre_reg;
 		this.id_dep_fk=id_dep_fk;
 	}
 	
-	private static final long serialVersionUID = 1L;
-
 }

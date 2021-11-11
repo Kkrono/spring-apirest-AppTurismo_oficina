@@ -8,9 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 
 @Data
@@ -23,16 +21,13 @@ public class Departamentos implements Serializable {
 	
 	@Id
 	private Long id_dep;
-	@Getter @Setter private String nombre_dep;
-	@Getter @Setter private Long id_pais_fk;
+	private String nombre_dep;
+	private Long id_pais_fk;
 
 	public Departamentos(String nombre_dep,Long id_pais_fk) {
 		this.nombre_dep = nombre_dep;
 		this.id_pais_fk=id_pais_fk;
 	}
-	
-	
-	
 	private static final long serialVersionUID = 1L;
 
 }
