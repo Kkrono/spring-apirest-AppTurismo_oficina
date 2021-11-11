@@ -22,14 +22,16 @@ public class Departamentos implements Serializable {
 	public static final String SEQUENCE_NAME="dep_sequence";
 	
 	@Id
-	Long id_dep;
-	@Getter @Setter String nombre_dep;
-	@Getter @Setter Long id_pais_fk;
+	private Long id_dep;
+	@Getter @Setter private String nombre_dep;
+	@Getter @Setter private Long id_pais_fk;
 
 	public Departamentos(String nombre_dep,Long id_pais_fk) {
 		this.nombre_dep = nombre_dep;
 		this.id_pais_fk=id_pais_fk;
 	}
+	
+	
 	
 	private static final long serialVersionUID = 1L;
 

@@ -22,9 +22,9 @@ public class Regiones implements Serializable {
 	public static final String SEQUENCE_NAME="reg_sequence";
 	
 	@Id
-	Long id_reg;
-	@Getter @Setter String nombre_reg;
-	@Getter @Setter Long id_dep_fk;
+	private Long id_reg;
+	@Getter @Setter private String nombre_reg;
+	@Getter @Setter private Long id_dep_fk;
 
 	public Regiones(String nombre_reg,Long id_dep_fk) {
 		this.nombre_reg = nombre_reg;

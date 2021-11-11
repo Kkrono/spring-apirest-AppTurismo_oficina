@@ -22,11 +22,11 @@ public class ComidasTipicas implements Serializable {
 	public static final String SEQUENCE_NAME="comidasTipicas_sequence";
 	
 	@Id
-	Long id_pla;
-	@Getter @Setter String nombre_pla;
-	@Getter @Setter String imagen_pla;
-	@Getter @Setter String descipcion_pla;
-	@Getter @Setter Long id_sit_fk;
+	private Long id_pla;
+	@Getter @Setter private String nombre_pla;
+	@Getter @Setter private String imagen_pla;
+	@Getter @Setter private String descipcion_pla;
+	@Getter @Setter private Long id_sit_fk;
 
 	public ComidasTipicas(String nombre_pla, String imagen_pla, String descipcion_pla, Long id_sit_fk) {
 		this.nombre_pla = nombre_pla;

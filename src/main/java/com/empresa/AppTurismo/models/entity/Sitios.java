@@ -22,11 +22,11 @@ public class Sitios implements Serializable {
 	public static final String SEQUENCE_NAME="sitios_sequence";
 	
 	@Id
-	Long id_sit;
-	@Getter @Setter String nombre_sit;
-	@Getter @Setter String descripcion_sit;
-	@Getter @Setter String imagen_sit;
-	@Getter @Setter Long id_reg_fk;
+	private Long id_sit;
+	@Getter @Setter private String nombre_sit;
+	@Getter @Setter private String descripcion_sit;
+	@Getter @Setter private String imagen_sit;
+	@Getter @Setter private Long id_reg_fk;
 
 	public Sitios(String nombre_sit, String descripcion_sit, String imagen_sit, Long id_reg_fk) {
 		this.nombre_sit = nombre_sit;
