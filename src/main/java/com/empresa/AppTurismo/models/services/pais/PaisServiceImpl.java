@@ -10,13 +10,13 @@ import com.empresa.AppTurismo.models.services.comun.ServiciosGenericosImpl;
 
 
 @Service
-public class PaisServiceImpl extends ServiciosGenericosImpl<Paises, Long> implements IPaisService {
+public class PaisServiceImpl extends ServiciosGenericosImpl<Paises, String> implements IPaisService {
 		
 	@Autowired
 	private IPaisDao paisDao;
 
 	@Override
-	public CrudRepository<Paises, Long> getDao() {
+	public CrudRepository<Paises, String> getDao() {
 		// TODO Auto-generated method stub
 		return paisDao;
 	}

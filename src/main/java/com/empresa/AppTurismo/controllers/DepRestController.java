@@ -34,7 +34,7 @@ public class DepRestController {
 		return depService.getAll();
 	}
 	@GetMapping("/dpto/{id}")
-	public Departamentos show(@PathVariable Long id) {
+	public Departamentos show(@PathVariable String id) {
 		return depService.get(id);
 	}
 	
@@ -42,24 +42,24 @@ public class DepRestController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Departamentos create(@RequestBody Departamentos dep) {
 		depService.verificarPaisExiste(dep);
-		dep.setId_dep((long) service.getSequenceNumber(Departamentos.SEQUENCE_NAME));
+		dep.setId_dep(service.getSequenceNumber(Departamentos.SEQUENCE_NAME));
 		return depService.save(dep);
 	}
 
 	@PutMapping("/dpto/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Departamentos update(@RequestBody Departamentos dep,@PathVariable Long id) {
+	public Departamentos update(@RequestBody Departamentos dep,@PathVariable String id) {
 		Departamentos sitioActual = depService.get(id);
 		Departamentos sitioValues=sitioActual;
 		sitioValues.setNombre_dep(dep.getNombre_dep());
 		depService.verificarPaisExiste(dep);
-		sitioValues.setId_pais_fk(dep.getId_pais_fk());
+		sitioValues.setPaises(dep.getPaises());
 		return depService.save(sitioValues);
 	}
 	
 	@DeleteMapping("/dpto/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Long id) {
+	public void delete(@PathVariable String id) {
 		depService.delete(id);
 	}
 }

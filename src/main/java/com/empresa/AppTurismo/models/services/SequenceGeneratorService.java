@@ -23,7 +23,7 @@ public class SequenceGeneratorService {
     public SequenceGeneratorService(MongoOperations mongoOperations) {
         this.mongoOperations = mongoOperations;
     }
-	public int getSequenceNumber(String sequenceName) {
+	public String getSequenceNumber(String sequenceName) {
 		Query query=new Query(Criteria.where("id").is(sequenceName));
 		Update update=new Update().inc("seq",1);
 		DbSequence counter=mongoOperations
@@ -31,7 +31,7 @@ public class SequenceGeneratorService {
 						update, FindAndModifyOptions.options().returnNew(true).upsert(true),
 						DbSequence.class);
 				
-		return !Objects.isNull(counter) ? counter.getSeq():1;
+		return !Objects.isNull(counter) ? counter.getSeq():"1";
 		
 	}
 

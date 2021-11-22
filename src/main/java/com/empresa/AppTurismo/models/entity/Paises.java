@@ -20,14 +20,10 @@ public class Paises implements Serializable {
 	public static final String SEQUENCE_NAME="pais_sequence";
 	
 	@Id
-	private Long id_pais;
+	private String id_pais;
 	private String nombre_pais;
 
 	private static final long serialVersionUID = 1L;
-
-	public Paises(String nombre_pais) {
-		this.nombre_pais = nombre_pais;
-	}
 
 
 }

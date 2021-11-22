@@ -34,18 +34,18 @@ public class PaisRestController {
 		return paisService.getAll();
 	}
 	@GetMapping("/paises/{id}")
-	public Paises show(@PathVariable Long id) {
+	public Paises show(@PathVariable String id) {
 		return paisService.get(id); 
 	}
 	@PostMapping("/paises")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Paises create(@RequestBody Paises pais) {
-		pais.setId_pais((long) service.getSequenceNumber(Paises.SEQUENCE_NAME));
+		pais.setId_pais(service.getSequenceNumber(Paises.SEQUENCE_NAME));
 		return paisService.save(pais);
 	}
 	@PutMapping("/paises/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Paises update(@RequestBody Paises pais,@PathVariable Long id) {
+	public Paises update(@RequestBody Paises pais,@PathVariable String id) {
 		Paises sitioActual = paisService.get(id); 
 		Paises sitioValues=sitioActual;
 		sitioValues.setNombre_pais(pais.getNombre_pais());
@@ -53,7 +53,7 @@ public class PaisRestController {
 	}
 	@DeleteMapping("/paises/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Long id) {
+	public void delete(@PathVariable String id) {
 		paisService.delete(id);
 	}
 }
