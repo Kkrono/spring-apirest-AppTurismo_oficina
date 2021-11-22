@@ -4,6 +4,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.empresa.AppTurismo.models.entity.Sitios;
 
-public interface ISitioDao extends MongoRepository<Sitios, Long> {
+public interface ISitioDao extends MongoRepository<Sitios, String> {
 
 }

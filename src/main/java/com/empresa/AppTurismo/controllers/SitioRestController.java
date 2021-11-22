@@ -34,7 +34,7 @@ public class SitioRestController {
 		return sitioService.getAll();
 	}
 	@GetMapping("/sitio/{id}")
-	public Sitios show(@PathVariable Long id) {
+	public Sitios show(@PathVariable String id) {
 		return sitioService.get(id);
 	}
 	
@@ -42,18 +42,18 @@ public class SitioRestController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Sitios create(@RequestBody Sitios sitios) {
 		sitioService.verificarRegionExiste(sitios);
-		sitios.setId_sit((long) service.getSequenceNumber(Sitios.SEQUENCE_NAME));
+		sitios.setId_sit(service.getSequenceNumber(Sitios.SEQUENCE_NAME));
 		return sitioService.save(sitios);
 	}
 
 	@PutMapping("/sitio/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Sitios update(@RequestBody Sitios sitios,@PathVariable Long id) {
+	public Sitios update(@RequestBody Sitios sitios,@PathVariable String id) {
 		Sitios sitioActual = sitioService.get(id);
 		Sitios sitioValues=sitioActual;
 		sitioValues.setNombre_sit(sitios.getNombre_sit());
 		sitioService.verificarRegionExiste(sitios);
-		sitioValues.setId_reg_fk(sitios.getId_reg_fk());
+		sitioValues.setRegion(sitios.getRegion());
 		sitioValues.setDescripcion_sit(sitios.getDescripcion_sit());
 		sitioValues.setImagen_sit(sitios.getImagen_sit());
 		return sitioService.save(sitioValues);
@@ -61,7 +61,7 @@ public class SitioRestController {
 	
 	@DeleteMapping("/sitio/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Long id) {
+	public void delete(@PathVariable String id) {
 		sitioService.delete(id);
 	}
 }

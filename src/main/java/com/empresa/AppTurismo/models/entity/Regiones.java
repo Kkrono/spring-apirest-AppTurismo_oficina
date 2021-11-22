@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -20,15 +21,11 @@ public class Regiones implements Serializable {
 	public static final String SEQUENCE_NAME="reg_sequence";
 	
 	@Id
-	private Long id_reg;
+	private String id_reg;
 	private String nombre_reg;
-	private Long id_dep_fk;
+	@DBRef
+	private Departamentos dep;
 
 	private static final long serialVersionUID = 1L;
 
-	public Regiones(String nombre_reg,Long id_dep_fk) {
-		this.nombre_reg = nombre_reg;
-		this.id_dep_fk=id_dep_fk;
-	}
-	
 }

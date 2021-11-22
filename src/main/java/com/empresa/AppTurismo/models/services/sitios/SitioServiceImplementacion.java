@@ -11,7 +11,7 @@ import com.empresa.AppTurismo.models.services.comun.ServiciosGenericosImpl;
 import com.empresa.AppTurismo.models.services.regiones.IRegionService;
 
 @Service
-public class SitioServiceImplementacion extends ServiciosGenericosImpl<Sitios, Long> implements ISitioService {
+public class SitioServiceImplementacion extends ServiciosGenericosImpl<Sitios, String> implements ISitioService {
 
 	@Autowired
 	private ISitioDao sitioDao;
@@ -19,7 +19,7 @@ public class SitioServiceImplementacion extends ServiciosGenericosImpl<Sitios, L
 	private IRegionService regionService;
 	
 	@Override
-	public CrudRepository<Sitios, Long> getDao() {
+	public CrudRepository<Sitios, String> getDao() {
 		// TODO Auto-generated method stub
 		return sitioDao;
 	}
@@ -27,8 +27,8 @@ public class SitioServiceImplementacion extends ServiciosGenericosImpl<Sitios, L
 	@Override
 	public Sitios verificarRegionExiste(Sitios sitios) {
 		// TODO Auto-generated method stub
-		if (sitios.getId_reg_fk()!=0) {
-			Regiones sitioActual = regionService.get(sitios.getId_reg_fk());
+		if (sitios.getRegion()!=null) {
+			Regiones sitioActual = regionService.get(sitios.getRegion().getId_reg());
 			Regiones sitioValues=sitioActual;
 			System.out.println(sitioValues.getNombre_reg());
 		}

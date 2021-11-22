@@ -26,11 +26,11 @@ public class DepServiceImpl extends ServiciosGenericosImpl<Departamentos, String
 	@Override
 	public Departamentos verificarPaisExiste(Departamentos dep) {
 		// TODO Auto-generated method stub
-//		if (dep.getPaises()!=0) {
-//			Paises sitioActual = paisService.get(dep.getPaises());
-//			Paises sitioValues=sitioActual;
-//			System.out.println(sitioValues.getNombre_pais());
-//		}
+		if (dep.getPais()!=null) {
+			Paises sitioActual = paisService.get(dep.getPais().getId_pais());
+			Paises sitioValues=sitioActual;
+			System.out.println(sitioValues.getNombre_pais());
+		}
 		return dep;
 	}
 

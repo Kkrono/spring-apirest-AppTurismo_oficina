@@ -24,7 +24,7 @@ public class Departamentos implements Serializable {
 	private String id_dep;
 	private String nombre_dep;
 	@DBRef
-	private Paises paises;
+	private Paises pais;
 
 	private static final long serialVersionUID = 1L;
 

@@ -53,7 +53,7 @@ public class DepRestController {
 		Departamentos sitioValues=sitioActual;
 		sitioValues.setNombre_dep(dep.getNombre_dep());
 		depService.verificarPaisExiste(dep);
-		sitioValues.setPaises(dep.getPaises());
+		sitioValues.setPais(dep.getPais());
 		return depService.save(sitioValues);
 	}
 	

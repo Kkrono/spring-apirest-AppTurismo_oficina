@@ -11,7 +11,7 @@ import com.empresa.AppTurismo.models.services.comun.ServiciosGenericosImpl;
 import com.empresa.AppTurismo.models.services.sitios.ISitioService;
 
 @Service
-public class ComidasTipicasServiceImpl extends ServiciosGenericosImpl<ComidasTipicas, Long> implements IComidasTipicasService {
+public class ComidasTipicasServiceImpl extends ServiciosGenericosImpl<ComidasTipicas, String> implements IComidasTipicasService {
 
 	@Autowired
 	private IComidasTipicasDao comidasTipicasDao;
@@ -19,7 +19,7 @@ public class ComidasTipicasServiceImpl extends ServiciosGenericosImpl<ComidasTip
 	private ISitioService sitioService;
 	
 	@Override
-	public CrudRepository<ComidasTipicas, Long> getDao() {
+	public CrudRepository<ComidasTipicas, String> getDao() {
 		// TODO Auto-generated method stub
 		return comidasTipicasDao;
 	}	
@@ -27,8 +27,8 @@ public class ComidasTipicasServiceImpl extends ServiciosGenericosImpl<ComidasTip
 	@Override
 	public ComidasTipicas verificarSitiosExiste(ComidasTipicas comidasTipicas) {
 		// TODO Auto-generated method stub
-		if (comidasTipicas.getId_sit_fk()!=0) {
-			Sitios sitioActual = sitioService.get(comidasTipicas.getId_sit_fk());
+		if (comidasTipicas.getSitio()!=null) {
+			Sitios sitioActual = sitioService.get(comidasTipicas.getSitio().getId_sit());
 			Sitios sitioValues=sitioActual;
 			System.out.println(sitioValues.getNombre_sit());
 		}

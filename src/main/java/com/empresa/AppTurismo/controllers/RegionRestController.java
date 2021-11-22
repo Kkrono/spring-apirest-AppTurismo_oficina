@@ -34,7 +34,7 @@ public class RegionRestController {
 		return regionService.getAll();
 	}
 	@GetMapping("/region/{id}")
-	public Regiones show(@PathVariable Long id) {
+	public Regiones show(@PathVariable String id) {
 		return regionService.get(id);
 	}
 	
@@ -42,24 +42,24 @@ public class RegionRestController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public Regiones create(@RequestBody Regiones regiones) {
 		regionService.verificarDepExiste(regiones);
-		regiones.setId_reg((long) service.getSequenceNumber(Regiones.SEQUENCE_NAME));
+		regiones.setId_reg(service.getSequenceNumber(Regiones.SEQUENCE_NAME));
 		return regionService.save(regiones);
 	}
 
 	@PutMapping("/region/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Regiones update(@RequestBody Regiones regiones,@PathVariable Long id) {
+	public Regiones update(@RequestBody Regiones regiones,@PathVariable String id) {
 		Regiones sitioActual = regionService.get(id);
 		Regiones sitioValues=sitioActual;
 		sitioValues.setNombre_reg(regiones.getNombre_reg());
 		regionService.verificarDepExiste(regiones);
-		sitioValues.setId_dep_fk(regiones.getId_dep_fk());
+		sitioValues.setDep(regiones.getDep());
 		return regionService.save(sitioValues);
 	}
 	
 	@DeleteMapping("/region/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Long id) {
+	public void delete(@PathVariable String id) {
 		regionService.delete(id);
 	}
 }
