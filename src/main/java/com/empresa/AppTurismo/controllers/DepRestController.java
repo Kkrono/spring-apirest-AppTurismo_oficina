@@ -41,7 +41,7 @@ public class DepRestController {
 	@PostMapping("/dpto")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Departamentos create(@RequestBody Departamentos dep) {
-		depService.verificarPaisExiste(dep);
+		//depService.verificarPaisExiste(dep);
 		dep.setId_dep(service.getSequenceNumber(Departamentos.SEQUENCE_NAME));
 		return depService.save(dep);
 	}
